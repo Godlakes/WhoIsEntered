@@ -7,7 +7,10 @@ ipserver="YOUR_IP_SERVER"
 portserv="YOUR_PORT_SERVER_SSH"
 mkdir -p $CAM_DIR
 cd $CAM_DIR
-
+if [[ -z $(dpkg -l | grep fswebcam) ]]; then
+		echo "Don't exist of fswebcam for correctly work.\nInstall.."
+		sudo apt install fswebcam || exit 1
+fi
 function doScreen(){
 data=$(date '+%Y-%m-%d_%H:%M:%S')
 namescreenshot="screenshotWEBCAM.jpg"
