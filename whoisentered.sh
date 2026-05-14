@@ -1,11 +1,11 @@
 #!/bin/bash
-set -euo pipefail
+#set -euo pipefail
 times=120 #in seconds
 CAM_DIR="$HOME/cam/.photos"
-CAM_DIR_SERV="Photo"
-userserv="YOUR_USER"
-ipserver="YOUR_IP_SERVER"
-portserv="YOUR_PORT_SERVER_SSH"
+CAM_DIR_SERV="PhotosDeb"
+userserv="godlakes"
+ipserver="5.53.21.143"
+portserv="2244"
 mkdir -p "$CAM_DIR"
 cd "$CAM_DIR" || exit 1
 if [[ -z $(command -v fswebcam) ]]; then
@@ -13,19 +13,19 @@ if [[ -z $(command -v fswebcam) ]]; then
 fi
 function doScreen(){
 data=$(date '+%Y-%m-%d_%H:%M:%S')
-namescreenshot="screenshotWEBCAM.jpg"
+namescreenshot="_screenshotWEBCAM.jpg"
 fswebcam -r 1280x720 --jpeg 85 -D 1 "$data$namescreenshot"
 sleep 1
 echo "Sending to Server.."
-scp -P $portserv "$CAM_DIR/$data$namescreenshot" $userserv@$ipserver:/home/$userserv/$CAM_DIR_SERV/ || printf "Server can't got save photo.\n\tPlease check to connect with your server.\nOr try to do this:\n\t ssh-copy-id -p $portserv $userserv@$ipserver" && exit 1
+scp -P $portserv "$CAM_DIR/$data$namescreenshot" $userserv@$ipserver:/home/$userserv/$CAM_DIR_SERV/ || printf "Server can't got save photo.\n\tPlease check to connect with your server.\nOr try to do this:\n\t ssh-copy-id -p $portserv $userserv@$ipserver" | exit 1
 echo "Operations Send is ended."
 }
 
 function doDieScreen(){
 data=$(date '+%Y-%m-%d_%H:%M:%S')
-namescreenshot="screenshotWEBCAMD.jpg"
+namescreenshot="_screenshotWEBCAMD.jpg"
 fswebcam -r 1280x720 --jpeg 85 -D 1 "$data$namescreenshot" #D is death
-scp -P $portserv "$CAM_DIR/$data$namescreenshot" $userserv@$ipserver:/home/$userserv/$CAM_DIR_SERV/ || printf "Server can't got save photo.\n\tPlease check to connect with your server.\nOr try to do this:\n\t ssh-copy-id -p $portserv $userserv@$ipserver" && exit 1
+scp -P $portserv "$CAM_DIR/$data$namescreenshot" $userserv@$ipserver:/home/$userserv/$CAM_DIR_SERV/ || printf "Server can't got save photo.\n\tPlease check to connect with your server.\nOr try to do this:\n\t ssh-copy-id -p $portserv $userserv@$ipserver" | exit 1
 echo "Operations send is ended"
 exit 1
 }
