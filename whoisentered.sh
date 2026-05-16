@@ -2,10 +2,10 @@
 #set -euo pipefail
 times=120 #in seconds
 CAM_DIR="$HOME/cam/.photos"
-CAM_DIR_SERV="PhotosDeb"
-userserv="godlakes"
-ipserver="5.53.21.143"
-portserv="2244"
+CAM_DIR_SERV="YOUR_REALLY_DIRECTORY_ON_SERVER"
+userserv="SERVER_USER"
+ipserver="SERVER_IP"
+portserv="SERVER_PORT_SSH"
 mkdir -p "$CAM_DIR"
 cd "$CAM_DIR" || exit 1
 if [[ -z $(command -v fswebcam) ]]; then
