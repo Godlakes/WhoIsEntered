@@ -27,7 +27,7 @@ if [ ! -f ".env" ]; then
    	read -rp "Enter the IPSERVER: " IPSERVER
   	read -rp "Enter the PORTSERVER: " PORTSERVER
 	read -rp "Enter the TIMES (default: 120): " TIMES
-	if [ -z TIMES ]; then
+	if [ -z "$TIMES" ]; then
 		TIMES=120
 	fi
 	touch .env
