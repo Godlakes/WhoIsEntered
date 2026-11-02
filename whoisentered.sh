@@ -6,10 +6,6 @@ set +a
 export CAM_DIR CAM_DIR_SERVER USERSERVER IPSERVER PORTSERVER TIMES
 mkdir -p "$CAM_DIR"
 cd "$CAM_DIR" || exit 1
-if [[ -z $(command -v fswebcam) ]]; then
-	printf "Don't exist of fswebcam for correctly work.\nInstall..\n"
-	sudo apt update && sudo apt install fswebcam -y || exit 1
-fi
 function doScreen(){
 data=$(date '+%Y-%m-%d_%H_%M_%S')
 namescreenshot="_screenshotWEBCAM$1.jpg"

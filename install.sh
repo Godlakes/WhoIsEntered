@@ -3,6 +3,15 @@ set -euo pipefail
 c=0
 user=${SUDO_USER:-$USER}
 re="Stop"
+if [[ -z $(command -v fswebcam) ]]; then
+	printf "Don't exist of fswebcam for correctly work.\nInstall..\n"
+	if [ -d "/etc/apt/" ]; then
+		sudo apt update && sudo apt install fswebcam -y
+	fi
+	if [ -d "/etc/dnf/" ]; then
+		sudo dnf update && sudo dnf install fswebcam -y
+	fi
+fi
 printf "Before you start to install WhoIsEntered you will create .env file with variables: CAM_DIR CAM_DIR_SERVER USERSERVER IPSERVER PORTSERVER TIMES\n"
 printf "Where: \n\tCAM_DIR - Directory your localhost, where will saving photos.\n\tCAM_DIR_SERVER - Directory, where your server will saving photos.\n\tUSERSERVER - User of your Server.\n\tIPSERVER - IP your server.\n\tPORTSERVER - Port SSH of your server.\n\tTIMES - period in seconds takes a photo from webcam.\n"
 if [ ! -f ".env" ]; then
