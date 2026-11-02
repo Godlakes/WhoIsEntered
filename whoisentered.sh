@@ -22,7 +22,7 @@ printf "Operations Send is ended.\n"
 if [ "$1" = "D" ]; then
 	printf "Something try to kill whoisentered at $data.\n"
 	exit 1
-if
+fi
 }
 #D - Death
 trap 'doScreen "D"' SIGINT
