@@ -2,7 +2,7 @@
 set -e
 cd "$(dirname "$0")"
 printf "Need root-permission for stop service and update.\n\tWARNING: YOUR LOCAL DATA, WHICH HAVE OTHER CODE WILL DELETE AND REPLACE ON THE NEW CODE FROM REPOSITORY!\n"
-if [ "$EUID" -eq 0 ]; then
+if [ "$EUID" -ne 0 ]; then
 	printf "Run as root this script update.\n"
 	exit 1
 fi
