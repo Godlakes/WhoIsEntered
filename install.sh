@@ -13,7 +13,7 @@ if [[ -z $(command -v fswebcam) ]]; then
 	fi
 fi
 printf "Before you start to install WhoIsEntered you will create .env file with variables: CAM_DIR CAM_DIR_SERVER USERSERVER IPSERVER PORTSERVER TIMES\n"
-printf "Where: \n\tCAM_DIR - Directory your localhost, where will saving photos.\n\tCAM_DIR_SERVER - Directory, where your server will saving photos.\n\tUSERSERVER - User of your Server.\n\tIPSERVER - IP your server.\n\tPORTSERVER - Port SSH of your server.\n\tTIMES - period in seconds takes a photo from webcam.\n"
+printf "Where: \n\tCAM_DIR - Directory your localhost, where will saving photos.\n\tCAM_DIR_SERVER - Directory, where your server will saving photos.\n\tUSERSERVER - User of your Server.\n\tIPSERVER - IP your server.\n\tPORTSERVER - Port SSH of your server.\n\tTIMES - Period in seconds takes a photo from webcam.\n"
 if [ ! -f ".env" ]; then
 	CAM_DIR=""
 	CAM_DIR_SERVER=""
@@ -40,7 +40,7 @@ PORTSERVER="$PORTSERVER"
 TIMES="$TIMES"
 EOF
 fi
-printf "\n\nChoice your variant setup whoisentered:\n\t1 - Unix variant (crontab)\n\t2 - systemd serice (Recommended)\n\t3 - Exit\n"
+printf "\n\nChoice your variant setup whoisentered:\n\t1 - Unix variant (crontab)\n\t2 - systemd service (Recommended)\n\t3 - Exit\n"
 while [ "$re" == "Stop" ]; do
 read -r c
 if [ "$c" != "1" ] && [ "$c" != "2" ] && [ "$c" != "3" ]; then
