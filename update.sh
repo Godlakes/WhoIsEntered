@@ -2,7 +2,10 @@
 set -e
 cd "$(dirname "$0")"
 printf "Need root-permission for stop service and update.\n\tWARNING: YOUR LOCAL DATA, WHICH HAVE OTHER CODE WILL DELETE AND REPLACE ON THE NEW CODE FROM REPOSITORY!\n"
-[ "$EUID" -eq 0 ] || { printf "Run as root this script update.\n"; exit 1 }
+if [ "$EUID" -eq 0 ]; then
+	printf "Run as root this script update.\n"
+	exit 1
+fi
 systemctl stop whoisenter || exit 1
 git fetch origin main
 git reset --hard origin/main
