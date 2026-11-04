@@ -7,6 +7,8 @@ if [ "$EUID" -ne 0 ]; then
 	exit 1
 fi
 systemctl stop whoisenter || exit 1
+git config --global url."https://github.com/".insteadOf "git@github.com:"
+git config --global --add safe.directory "$(pwd)"
 git fetch origin main
 git reset --hard origin/main
 if [ ! -f whoisentered.sh ] || [ ! -f install.sh ]; then
